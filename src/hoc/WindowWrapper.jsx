@@ -43,6 +43,7 @@ const WindowWrapper = (Component, windowKey) => {
                 ref={ref}
                 style={{zIndex}}
                 className="absolute"
+                onPointerDown={() => focusWindow(windowKey)}
             >
                 <Component {...props} />
             </section>

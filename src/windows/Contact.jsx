@@ -1,6 +1,6 @@
 import windowWrapper from "#hoc/WindowWrapper.jsx";
 import { socials } from "#constants";
-import {WindowControls} from "#components";
+import { WindowControls } from "#components";
 
 const Contact = () => {
     return (
@@ -12,7 +12,7 @@ const Contact = () => {
 
             <div className="p-5 space-y-5">
                 <img
-                    src="/images/adrian.jpg"
+                    src="/images/farid.jpeg"
                     alt="Adrian"
                     className="w-20 rounded-full"
                 />
