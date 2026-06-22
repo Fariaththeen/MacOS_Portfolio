@@ -1,10 +1,10 @@
-import {useRef} from "react";
+import { useRef } from "react";
 import gsap from "gsap";
-import {useGSAP} from "@gsap/react";
+import { useGSAP } from "@gsap/react";
 
 const FONTS_WEIGHTS = {
-    subtitle: {min:100, max:400, default:100},
-    title: {min:400, max:900, default:400},
+    subtitle: { min: 100, max: 400, default: 100 },
+    title: { min: 400, max: 900, default: 400 },
 }
 
 const renderText = (text, className, baseWeight = 400) => {
@@ -12,7 +12,7 @@ const renderText = (text, className, baseWeight = 400) => {
         <span
             key={i}
             className={className}
-            style={{fontVariationSettings: `'wght' ${baseWeight}`}}
+            style={{ fontVariationSettings: `'wght' ${baseWeight}` }}
         >
             {char === ' ' ? '\u00A0' : char}
         </span>
@@ -20,10 +20,10 @@ const renderText = (text, className, baseWeight = 400) => {
 }
 
 const setupTextHover = (container, type) => {
-    if (!container) return() => {};
+    if (!container) return () => { };
 
     const letters = container.querySelectorAll('span');
-    const {min, max, default: base} = FONTS_WEIGHTS[type];
+    const { min, max, default: base } = FONTS_WEIGHTS[type];
 
     const animateLetter = (letter, weight, duration = 0.25) => {
         return gsap.to(letter, {
@@ -34,11 +34,11 @@ const setupTextHover = (container, type) => {
     }
 
     const handleMouseMove = (e) => {
-        const {left} = container.getBoundingClientRect();
+        const { left } = container.getBoundingClientRect();
         const mouseX = e.clientX - left;
 
         letters.forEach((letter) => {
-            const {left: l, width: w} = letter.getBoundingClientRect();
+            const { left: l, width: w } = letter.getBoundingClientRect();
             const distance = Math.abs(mouseX - (l - left + w / 2));
             const intensity = Math.exp(-(distance ** 2) / 20000);
 
@@ -75,19 +75,15 @@ const Welcome = () => {
 
     return (
         <section id="welcome">
-            <p ref={subtitleRef}>
+            <p ref={subtitleRef} className="text-center px-4">
                 {renderText(
-                    "Hey, I'm Farid! Welcome to my",
-                    'text-3xl font-georama',
+                    "Hey, I'm Farid! welcome to my",
+                    'max-sm:text-2xl text-3xl font-georama',
                     100
                 )}
             </p>
-            <h1 ref={titleRef} className="mt-7">
-                {renderText("Portfolio", "text-9xl italic font-georama")}</h1>
-
-            <div className="small-screen">
-                <p>This Portfolio is designed for desktop/tablet screens only.</p>
-            </div>
+            <h1 ref={titleRef} className="mt-7 text-center">
+                {renderText("portfolio.", "max-sm:text-7xl text-9xl italic font-georama")}</h1>
         </section>
     )
 }
