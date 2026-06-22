@@ -17,35 +17,39 @@ const BootScreen = ({ onBootComplete }) => {
         }
         
         setShowButton(false);
-        
-        // Boot animation sequence
-        const tl = gsap.timeline({
-            onComplete: () => {
-                onBootComplete();
-            }
-        });
-
-        tl.to(".boot-logo", { 
-            opacity: 1, 
-            duration: 1.5,
-            ease: "power2.inOut"
-        })
-        .to(".boot-progress-container", { 
-            opacity: 1, 
-            duration: 0.8 
-        }, "-=0.5")
-        .to(".boot-progress-bar", { 
-            width: "100%", 
-            duration: 2.5, 
-            ease: "power1.inOut" 
-        })
-        .to(".boot-screen", { 
-            opacity: 0, 
-            duration: 1.2, 
-            ease: "power2.inOut",
-            delay: 0.5 
-        });
     };
+
+    useEffect(() => {
+        if (!showButton) {
+            // Boot animation sequence
+            const tl = gsap.timeline({
+                onComplete: () => {
+                    onBootComplete();
+                }
+            });
+
+            tl.to(".boot-logo", { 
+                opacity: 1, 
+                duration: 1.5,
+                ease: "power2.inOut"
+            })
+            .to(".boot-progress-container", { 
+                opacity: 1, 
+                duration: 0.8 
+            }, "-=0.5")
+            .to(".boot-progress-bar", { 
+                width: "100%", 
+                duration: 2.5, 
+                ease: "power1.inOut" 
+            })
+            .to(".boot-screen", { 
+                opacity: 0, 
+                duration: 1.2, 
+                ease: "power2.inOut",
+                delay: 0.5 
+            });
+        }
+    }, [showButton, onBootComplete]);
 
     return (
         <div className="boot-screen fixed inset-0 bg-black z-[10000] flex flex-col items-center justify-center select-none overflow-hidden">

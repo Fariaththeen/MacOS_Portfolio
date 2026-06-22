@@ -4,6 +4,7 @@ import Dock from "#components/Dock.jsx";
 import WindowControls from "#components/WindowControls.jsx";
 import Home from "#components/Home.jsx";
 import BootScreen from "#components/BootScreen.jsx";
+import MobileStatusBar from "#components/MobileStatusBar.jsx";
 
 
-export { Navbar, Welcome, Dock, WindowControls, Home, BootScreen };
+export { Navbar, Welcome, Dock, WindowControls, Home, BootScreen, MobileStatusBar };

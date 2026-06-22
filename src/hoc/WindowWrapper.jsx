@@ -26,6 +26,9 @@ const WindowWrapper = (Component, windowKey) => {
             const el = ref.current;
             if (!el) return;
 
+            // Only make windows draggable on desktop/tablet (width >= 768px)
+            if (window.innerWidth < 768) return;
+
             const [instance] = Draggable.create(el, {onPress: () => focusWindow(windowKey)})
 
             return () => instance.kill();
